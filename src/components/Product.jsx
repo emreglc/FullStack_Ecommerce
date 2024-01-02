@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/stores/slices/cart'
 
-export default function Product({ name, price, index }) {
+export default function Product({ name, price, id }) {
 
     const dispatch = useDispatch()
 
@@ -17,7 +17,7 @@ export default function Product({ name, price, index }) {
                 <p className="text-gray-700 text-base">${price}</p>
             </div>
             <div className="px-6 py-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => dispatch(addToCart({ name, price, index }))}>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => dispatch(addToCart({ name, price, id }))}>
                     Add to Cart
                 </button>
             </div>

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../redux/stores/slices/cart'
 
-export default function CartItem({ name, price, quantity, index }) {
+export default function CartItem({ name, price, quantity, id }) {
 
     const dispatch = useDispatch(state => state.cart)
 
@@ -18,7 +18,7 @@ export default function CartItem({ name, price, quantity, index }) {
                     <p className="mt-1 text-gray-500">${price} each</p>
                     <p className="mt-1 text-gray-500">Quantity: {quantity}</p>
                     <div className="mt-2">
-                        <button className="bg-indigo-500 text-white py-1 px-2 rounded" onClick={() => dispatch(removeFromCart({ index }))}>
+                        <button className="bg-indigo-500 text-white py-1 px-2 rounded" onClick={() => dispatch(removeFromCart({ id }))}>
                             Remove
                         </button>
                     </div>

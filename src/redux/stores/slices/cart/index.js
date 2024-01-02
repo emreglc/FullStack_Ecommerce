@@ -25,10 +25,10 @@ export const cartSlice = createSlice({
     reducers: {
 
         addToCart: (state, action) => {
-            const { name, price, index } = action.payload;
+            const { name, price, id } = action.payload;
 
             // Check if item is in the cart
-            const itemIndex = state.findIndex(item => item.index === index);
+            const itemIndex = state.findIndex(item => item.id === id);
 
             if (itemIndex !== -1) {
                 // Item is in the cart
@@ -44,7 +44,7 @@ export const cartSlice = createSlice({
             }
 
             // Item is not in the cart, add it to the cart
-            const newItem = { name, price, index, quantity: 1 };
+            const newItem = { name, price, id, quantity: 1 };
             const newState = [...state, newItem];
 
             // Save the updated cart to local storage
@@ -54,10 +54,10 @@ export const cartSlice = createSlice({
             return newState;
         },
         removeFromCart: (state, action) => {
-            const { index } = action.payload;
+            const { id } = action.payload;
 
             // Check if item is in the cart
-            const itemIndex = state.findIndex(item => item.index === index);
+            const itemIndex = state.findIndex(item => item.id === id);
 
             if (itemIndex !== -1) {
                 // Item is in the cart
