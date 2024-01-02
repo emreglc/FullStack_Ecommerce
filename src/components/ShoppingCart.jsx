@@ -7,8 +7,8 @@ export default function ShoppingCart({ cartActive }) {
     console.log("cart: " + cart)
     return (
         <div className={`shopping-cart p-5 fixed bg-slate-500 top-28 right-1 ${cartActive ? "flex" : "hidden"} flex-col`}>
-            {cart && cart.map((item, index) => (
-                <CartItem name={item.name} price={item.price} index={index} key={index} quantity={1} />
+            {cart && cart.map((item, key) => (
+                <CartItem name={item.name} price={item.price} index={item.index} key={key} quantity={item.quantity} />
             ))}
         </div>
     )

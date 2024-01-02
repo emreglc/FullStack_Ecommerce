@@ -18,7 +18,7 @@ export default function CartItem({ name, price, quantity, index }) {
                     <p className="mt-1 text-gray-500">${price} each</p>
                     <p className="mt-1 text-gray-500">Quantity: {quantity}</p>
                     <div className="mt-2">
-                        <button className="bg-indigo-500 text-white py-1 px-2 rounded" onClick={() => dispatch(removeFromCart(index))}>
+                        <button className="bg-indigo-500 text-white py-1 px-2 rounded" onClick={() => dispatch(removeFromCart({ index }))}>
                             Remove
                         </button>
                     </div>
