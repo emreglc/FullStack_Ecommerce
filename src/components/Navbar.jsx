@@ -14,8 +14,7 @@ export default function Navbar() {
             <div className="left">
                 <Link to={"/"}><FontAwesomeIcon icon={faCss3Alt} size='3x' /></Link>
             </div>
-            <div className="right flex w-1/3">
-                <Link to={"/products"} className="m-auto p-3 bg-green-100">PRODUCTS</Link>
+            <div className="right flex">
                 <button className="p-3" onClick={() => { setCartActive(!cartActive) }}><FontAwesomeIcon icon={faCartShopping} size='2x' /></button>
                 <ShoppingCart cartActive={cartActive} />
             </div>
