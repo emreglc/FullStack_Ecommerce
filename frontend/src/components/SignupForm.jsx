@@ -1,15 +1,50 @@
 import React, { useState } from 'react';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { login } from '../redux/stores/slices/auth';
 
-const SignupForm = ({ onToggleForm, onSubmit }) => {
+const signup = async (credentials) => {
+
+    const res = await axios.post('http://localhost:3001/api/signup', credentials)
+    return res
+}
+
+const SignupForm = ({ onToggleForm }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('')
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleSignup = async (e) => {
+        try {
+            e.preventDefault();
+
+            const res = await signup({ email, password, name, surname })
+            console.log(res)
+
+            if (res.status === 200) {
+                dispatch(login({ user: res.data.user, token: res.data.token }))
+                navigate('/')
+            }
+            else {
+                throw new Error(res.message)
+
+            }
+        } catch (error) {
+            console.log(error.response.data.message)
+        }
+
+
+    };
+
     return (
         <div>
             <h2 className="text-2xl font-semibold mb-4">Sign Up</h2>
-            <form onSubmit={(e) => onSubmit(e, email, password)}>
+            <form onSubmit={(e) => handleSignup(e)}>
                 <div className="mb-4">
                     <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
                         Name

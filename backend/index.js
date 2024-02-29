@@ -10,6 +10,7 @@ import signup from './routes/api.signup.js';
 import http from 'http'
 import fs from 'fs'
 import rateLimit from 'express-rate-limit';
+import errorHandler from './middlewares/errorHandler.js';
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -33,6 +34,7 @@ app.use(morgan('combined'));
 
 app.use("/api", login)
 app.use("/api", signup)
+app.use(errorHandler)
 
 // starting the server
 app.listen(3001, () => {

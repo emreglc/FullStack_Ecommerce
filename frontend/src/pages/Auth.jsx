@@ -13,26 +13,13 @@ export default function Auth() {
         setPassword('');
     };
 
-    const handleSignup = (e) => {
-        e.preventDefault();
-
-
-
-    };
-    const handleLogin = (e) => {
-        e.preventDefault();
-
-
-
-    };
-
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="bg-gray-200 p-8 rounded shadow-md w-96">
                 {isSignup ? (
-                    <SignupForm onToggleForm={handleFormToggle} onSubmit={handleSignup} />
+                    <SignupForm onToggleForm={handleFormToggle} />
                 ) : (
-                    <LoginForm onToggleForm={handleFormToggle} onSubmit={handleLogin} />
+                    <LoginForm onToggleForm={handleFormToggle} />
                 )}
             </div>
         </div>
