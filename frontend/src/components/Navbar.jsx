@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCss3Alt } from '@fortawesome/free-brands-svg-icons'
-import { faArrowRightToBracket, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightToBracket, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import ShoppingCart from './ShoppingCart'
@@ -24,13 +24,13 @@ export default function Navbar() {
                 {user ?
                     <span className="p-3 relative">
                         <button className="flex flex-col text-lg font-medium" onClick={() => dispatch(logout())} >
-                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' /><h4>LOGOUT</h4>
+                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' /><h4>LOGOUT</h4>
                         </button>
                     </span>
                     :
                     <span className="p-3 relative">
                         <Link className="flex flex-col text-lg font-medium" to="/auth" >
-                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' /><h4>LOGIN</h4>
+                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' /><h4>LOGIN</h4>
                         </Link>
                     </span>
                 }
@@ -42,6 +42,14 @@ export default function Navbar() {
                     }
                 </button>
                 <ShoppingCart cartActive={cartActive} />
+                {user &&
+                    <span className="p-3 relative ml-8">
+                        <button className="flex flex-col text-lg font-medium" >
+                            <FontAwesomeIcon icon={faUser} size='2x' className='m-auto' /><h4>{user.name}</h4>
+                        </button>
+                    </span>
+                }
+
             </div >
         </div >
     )

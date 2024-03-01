@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../redux/stores/slices/cart'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
@@ -6,11 +6,12 @@ import 'sweetalert2/src/sweetalert2.scss'
 export default function Product({ name, price, id }) {
 
     const dispatch = useDispatch()
+    const { user } = useSelector((state) => state.auth)
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <img
-                src="src/assets/img/product_dummy.png" // Replace with your product image URL
+                src="src/assets/img/product_dummy.png"
                 alt={name}
                 className="w-full"
             />
@@ -25,6 +26,7 @@ export default function Product({ name, price, id }) {
                         icon: 'success',
                         title: 'Success!',
                         text: 'Product added to cart successfully',
+                        timer: 1000
                     });
                 }}>
                     Add to Cart

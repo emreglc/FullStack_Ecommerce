@@ -5,10 +5,10 @@ import LoginForm from '../components/LoginForm';
 export default function Auth() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isSignup, setIsSignup] = useState(true);
+    const [isLogin, setIsLogin] = useState(true);
 
     const handleFormToggle = () => {
-        setIsSignup((prevIsSignup) => !prevIsSignup);
+        setIsLogin((prevIsLogin) => !prevIsLogin);
         setEmail('');
         setPassword('');
     };
@@ -16,10 +16,10 @@ export default function Auth() {
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="bg-gray-200 p-8 rounded shadow-md w-96">
-                {isSignup ? (
-                    <SignupForm onToggleForm={handleFormToggle} />
-                ) : (
+                {isLogin ? (
                     <LoginForm onToggleForm={handleFormToggle} />
+                ) : (
+                    <SignupForm onToggleForm={handleFormToggle} />
                 )}
             </div>
         </div>
