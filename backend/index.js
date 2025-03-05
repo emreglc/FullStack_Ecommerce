@@ -37,6 +37,6 @@ app.use("/api", signup)
 app.use(errorHandler)
 
 // starting the server
-app.listen(3001, () => {
-    console.log('listening on port 3001');
+app.listen(3005, () => {
+    console.log('listening on port 3005');
 });

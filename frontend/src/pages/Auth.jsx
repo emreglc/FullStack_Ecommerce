@@ -14,7 +14,7 @@ export default function Auth() {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center mt-12">
             <div className="bg-gray-200 p-8 rounded shadow-md w-96">
                 {isLogin ? (
                     <LoginForm onToggleForm={handleFormToggle} />

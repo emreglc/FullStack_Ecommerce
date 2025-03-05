@@ -9,7 +9,7 @@ export default function Product({ name, price, id }) {
     const { user } = useSelector((state) => state.auth)
 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <div className="rounded overflow-hidden shadow-lg bg-gray-100 w-72">
             <img
                 src="src/assets/img/product_dummy.png"
                 alt={name}

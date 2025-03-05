@@ -16,41 +16,40 @@ export default function Navbar() {
     const dispatch = useDispatch()
 
     return (
-        <div className="navbar bg-lime-300 flex justify-between px-12 py-8 align-middle sticky h-32">
+        <nav className="navbar bg-blue-400 flex justify-between px-8 py-6 items-center sticky top-0 shadow-md">
             <div className="left">
-                <Link to={"/"}><FontAwesomeIcon icon={faCss3Alt} size='3x' /></Link>
+                <Link to={"/"} className="text-3xl font-bold text-gray-800">
+                    <FontAwesomeIcon icon={faCss3Alt} size='2x' />
+                </Link>
             </div>
-            <div className="right flex">
-                {user ?
-                    <span className="p-3 relative">
-                        <button className="flex flex-col text-lg font-medium" onClick={() => dispatch(logout())} >
-                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' /><h4>LOGOUT</h4>
-                        </button>
-                    </span>
-                    :
-                    <span className="p-3 relative">
-                        <Link className="flex flex-col text-lg font-medium" to="/auth" >
-                            <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' /><h4>LOGIN</h4>
-                        </Link>
-                    </span>
-                }
-                <button className="p-3 relative" onClick={() => { setCartActive(!cartActive) }}><FontAwesomeIcon icon={faCartShopping} size='2x' />
-                    {cart.length > 0 &&
-                        <span className="rounded-full border-blue-950 border-2 h-6 w-6 inline-block text-sm bg-slate-300 absolute bottom-1 right-0">
+            <div className="right flex items-center space-x-6">
+                {user ? (
+                    <button className="flex flex-col items-center text-lg font-medium text-gray-800 hover:text-gray-600" onClick={() => dispatch(logout())}>
+                        <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' />
+                        <span>LOGOUT</span>
+                    </button>
+                ) : (
+                    <Link className="flex flex-col items-center text-lg font-medium text-gray-800 hover:text-gray-600" to="/auth">
+                        <FontAwesomeIcon icon={faArrowRightToBracket} size='2x' className='m-auto' />
+                        <span>LOGIN</span>
+                    </Link>
+                )}
+                <button className="relative flex items-center text-gray-800 hover:text-gray-600" onClick={() => setCartActive(!cartActive)}>
+                    <FontAwesomeIcon icon={faCartShopping} size='2x' />
+                    {cart.length > 0 && (
+                        <span className="rounded-full bg-red-500 text-white text-xs font-bold h-6 w-6 flex items-center justify-center absolute -top-2 -right-2">
                             {cart.length}
                         </span>
-                    }
+                    )}
                 </button>
                 <ShoppingCart cartActive={cartActive} />
-                {user &&
-                    <span className="p-3 relative ml-8">
-                        <button className="flex flex-col text-lg font-medium" >
-                            <FontAwesomeIcon icon={faUser} size='2x' className='m-auto' /><h4>{user.name}</h4>
-                        </button>
-                    </span>
-                }
-
-            </div >
-        </div >
+                {user && (
+                    <div className="flex items-center space-x-3">
+                        <FontAwesomeIcon icon={faUser} size='2x' className='text-gray-800' />
+                        <span className="text-lg font-medium text-gray-800">{user.name}</span>
+                    </div>
+                )}
+            </div>
+        </nav>
     )
 }

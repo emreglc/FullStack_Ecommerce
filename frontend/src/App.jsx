@@ -44,7 +44,7 @@ function App() {
         <>
             <Navbar />
             <Routes>
-                <Route path="/" element={user ? <Home /> : <Auth />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/auth" element={<Auth />} />
             </Routes>
         </>
